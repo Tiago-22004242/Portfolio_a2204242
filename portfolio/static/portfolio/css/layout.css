@@ -220,7 +220,6 @@ margin: 0;
   background-color: rgb(238, 248, 248);
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
 }
 .caixasCompetencias div {
   float: left;
