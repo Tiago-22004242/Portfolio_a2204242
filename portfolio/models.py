@@ -73,7 +73,7 @@ class Laboratorio(models.Model):
         return self.titulo
 
 class Noticia(models.Model):
-    titulo = models.CharField(max_length=30)
+    titulo = models.TextField()
     texto = models.TextField()
     imagem = models.ImageField(upload_to='noticias/')
     link = models.URLField(default='')
