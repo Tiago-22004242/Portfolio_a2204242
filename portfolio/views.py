@@ -1,5 +1,4 @@
 import matplotlib
-import PyQt5
 from django.http import HttpResponseRedirect
 from matplotlib import pyplot as plt
 matplotlib.use("Qt5Agg")
