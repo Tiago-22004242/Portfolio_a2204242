@@ -45,7 +45,7 @@ def web_view(request):
                 'noticias': Noticia.objects.all(),
                 'comentarios': Comentarios.objects.all(),
     }
-    return render(request, 'portfolio/web.html')
+    return render(request, 'portfolio/web.html',context)
 
 
 def contacto_view(request):
