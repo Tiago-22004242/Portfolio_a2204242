@@ -103,7 +103,7 @@ class Cadeira(models.Model):
             ]
         )
     Etcs = models.IntegerField()
-    topicos = models.CharField(max_length=100)
+    topicos = models.CharField(max_length=1000)
     ranking = models.IntegerField(
             default=1,
             validators=[
