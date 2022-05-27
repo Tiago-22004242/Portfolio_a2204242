@@ -1,7 +1,6 @@
 import matplotlib
 from django.http import HttpResponseRedirect
 from matplotlib import pyplot as plt
-matplotlib.use("Qt5Agg")
 import datetime
 from .models import Post, Escola, Cadeira, Pessoa, Certificado, Competencia, Linguagem, PontuacaoQuizz, Projeto, \
     Tecnologia, TrabalhoCurso, Laboratorio, Noticia, Comentarios
