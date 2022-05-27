@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from matplotlib import pyplot as plt
 import datetime
 from .models import Post, Escola, Cadeira, Pessoa, Certificado, Competencia, Linguagem, PontuacaoQuizz, Projeto, \
-    Tecnologia, TrabalhoCurso, Laboratorio, Noticia, Comentarios
+    Tecnologia, TrabalhoCurso, Laboratorio, Noticia, Comentarios, Interesse
 from .forms import PostForm
 from django.shortcuts import render
 from django.urls import reverse
@@ -29,6 +29,7 @@ def sobre_view(request):
                'certificados':  Certificado.objects.all(),
                'competencias': Competencia.objects.all(),
                'linguagens': Linguagem.objects.all(),
+               'interesses': Interesse.objects.all(),
                }
     return render(request, 'portfolio/sobre.html', context)
 

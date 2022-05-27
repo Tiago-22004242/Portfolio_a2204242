@@ -158,9 +158,26 @@
             Java
         </li>
     </ul>
-    Tecnologias
+    Competências Informaticas
     <ul>
-
+    <li>
+       Desenvolvimento e teste de componentes tecnológicos (hardwares), como processadores, periféricos, dispositivos de memória e roteadores.
+    </li>
+        <li>
+            Programação e teste de softwares para dispositivos móveis e computadores.
+        </li>
+        <li>
+         Design, configuração e teste de projetos de rede.
+        </li>
+        <li>
+            Desenvolvimento e teste de sistemas robóticos.
+        </li>
+        <li>
+           Desenvolvimento de softwares e hardwares baseados em Inteligência Artificial
+        </li>
+        <li>
+            Criação e implementação de sistemas de suporte para uma variedade de produtos, serviços e indústrias.
+        </li>
     </ul>
 </div>
 <h1>
@@ -219,5 +236,24 @@
         </p>
     </div>
     {% endfor %}
+</div>
+<h1>
+    Interesses e Hobbies
+</h1>
+<div class="caixasLicenciatura">
+    <div>
+        {% for interesse in interesses %}
+        <p>
+            Titulo : {{interesse.titulo}}
+        </p>
+        <p>
+            Descricao : {{interesse.descricao}}
+        </p>
+        <img src="{{interesse.imagem.url}}" width="100" height="100"  class="rounded mx-auto d-block">
+        <p>
+            <a href="{{interesse.link}}">Site</a>
+        </p>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
