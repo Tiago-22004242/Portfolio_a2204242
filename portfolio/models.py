@@ -6,7 +6,7 @@ class Post(models.Model):
     autor = models.CharField(max_length=30)
     data = models.DateField()
     titulo = models.CharField(max_length=30)
-    descricao = models.CharField(max_length=500)
+    descricao = models.CharField(max_length=255)
     link = models.URLField(blank=True)
     imagem = models.ImageField(upload_to='posts/',blank=True)
     def __str__(self):
