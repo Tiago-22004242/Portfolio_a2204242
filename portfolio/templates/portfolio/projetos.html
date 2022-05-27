@@ -1,0 +1,130 @@
+<!-- home.html -->
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+{% block main %}
+<h1>
+    Projetos
+</h1>
+<div class="caixasLicenciatura">
+ {% for projeto in projetos %}
+    <div>
+        <p class="text-center">
+           {{projeto.titulo}}
+        </p>
+        <p>
+            Descricao : {{projeto.descricao}}
+        </p>
+        <img src="{{projeto.imagem.url}} " width="250" height="250" class="rounded mx-auto d-block">
+        <p>
+            Ano : {{projeto.ano}}
+        </p>
+        {% for participante in projeto.participantes.all %}
+        {% if participante.link_aluno %}
+        <p>
+            Partipantes
+        </p>
+        <p>
+            Linkdln : <a href="{{participante.linkdln}}">{{participante.nome}}</a>
+        </p>
+        <p>
+            Portfolio : <a href="{{participante.link_aluno}}">{{participante.nome}}</a>
+        </p>
+        {% endif %}
+        {% endfor %}
+        {% if participante.github %}
+         <p>
+             Github : <a href="{{participante.github}">Perfil</a>
+        </p>
+        {% endif %}
+        {% if participante.youtube %}
+         <p>
+             Youtube : <a href="{{participante.youtube}">Canal</a>
+        </p>
+        {% endif %}
+        {% for tecnologia in projeto.tecnologias.all %}
+        <p>
+            Tecnologias
+        </p>
+        <p>
+           Nome:{{tecnologia.nome}}
+        </p>
+        <p>
+            <img src="{{tecnologia.logotipo.url}} " width="250" height="250" class="rounded mx-auto d-block">
+        </p>
+        <p>
+            Descricao:{{tecnologia.descricao}}
+        </p>
+        {% endfor %}
+        {% for competencia in competencias %}
+        {% for projeto2 in competencia.projeto.all %}
+        {% if projeto2.titulo == projeto.titulo %}
+        <p>
+            Competencias:
+        </p>
+        <p>
+           Titulo: {{competencia.titulo}}
+        </p>
+        <p>
+            Descricao: {{competencia.descricao}}
+        </p>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+<h1>
+    Trabalhos Final de Curso
+</h1>
+<div class="caixasLicenciatura">
+    {% for trabalho in trabalhos %}
+    <div>
+        <p>
+            Titulo : {{trabalho.titulo}}
+        </p>
+        <p>
+            Autores:
+        </p>
+        {% for aluno in trabalhos.autor.all %}
+        <p>
+            Linkdln : <a href="{{aluno.linkdln}}">{{aluno.nome}}</a>
+        </p>
+        <p>
+            <a href="{{aluno.link_aluno}}">Perfil</a>
+        </p>
+        {% endfor %}
+        <p>
+            Orientadores:
+        </p>
+        {% for orientador in trabalho.orientador.all %}
+        <p>
+            Linkdln : <a href="{{orientador.linkdln}}">{{orientador.nome}}</a>
+        </p>
+        <p>
+            <a href="{{orientador.link_professor}}">Perfil</a>
+        </p>
+        {% endfor %}
+        <p>
+            Ano :{{trabalho.ano}}
+        </p>
+        <p>
+            Resumo : {{trabalho.resumo}}
+        </p>
+        <p>
+            Descricao : {{trabalho.descricao}}
+        </p>
+        {% if trabalho.github %}
+        <p>
+            <a href="{{trabalho.github}}">github</a>
+        </p>
+        {% endif %}
+        {% if trabalho.youtube %}
+        <p>
+            <a href="{{trabalho.github}}">youtube</a>
+        </p>
+        {% endif %}
+        <a href="{{trabalho.relatorio.url}}">Relatorio</a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

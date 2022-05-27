@@ -1,0 +1,244 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing:border-box;
+  font-family: 'Inter', sans-serif;
+  color : #0063B2FF;
+}
+header {
+  height: 10vh;
+  background: #9CC3D5FF;
+  color: white;
+  top: 0;
+
+  /* alinhando logo e menu */
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header div {
+  font-size: 2em;
+  padding: 1em;
+}
+
+header nav {
+  display:flex;
+  justify-contents: flex-end;
+}
+
+nav a {
+  padding: 0 1em;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #0063B2FF;
+}
+nav a:hover {
+  color: white;
+}
+main {
+  min-height: 85vh;
+  background-color:#f0ffff;
+}
+ul{
+ list-style-type: square;
+ padding: 3px 60px;
+}
+footer {
+  background: #9CC3D5FF;
+  height:10vh;
+  display:flex;
+  justify-content: center;
+  padding: 0 2vw;
+  align-items: center;
+}
+.contactos div {
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding : 20px;
+color : white;
+}
+.contactos div a {
+margin: 10px;
+}
+.contactos div svg {
+color : white;
+}
+.caixasLicenciatura {
+  background-color: rgb(238, 248, 248);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.caixasLicenciatura div {
+  float: left;
+  min-width: 200px;
+  min-height: 280px;
+  padding: 25px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 10px;                 /* arredonda os cantos */
+  box-shadow: 5px 5px 15px ;
+}
+.caixasLicenciatura div p {
+margin: 0;
+}
+.caixasProjeto{
+ background-color: rgb(238, 248, 248);
+ display: flex;
+ flex-flow: row wrap;
+ justify-content: center;
+}
+.caixasProjeto div {
+  float: left;
+  width: 300px;
+  height: 500px;
+  padding: 25px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 10px;                 /* arredonda os cantos */
+  box-shadow: 5px 5px 15px;
+}
+.caixasProjeto div a {
+text-decoration: none;
+}
+.caixasProjeto div a:hover {
+color: black;
+}
+.caixasLicenciatura div a {
+text-decoration: none;
+}
+.caixasLicenciatura div a:hover {
+color: black;
+}
+.heropage{
+  min-height: 90vh;
+  background-image:url("../images/background.d23ba110ca9c.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.mensagem{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mensagem p {
+ color : white ;
+ font-size: 6em;
+ text-align: center;
+}
+.img_home{
+  height: 800px;
+  width: 600px;
+}
+.heropage * p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.paralax1 {
+  /* definindo altura e cor */
+  min-height: 40vh;
+  background: #9CC3D5FF;
+  padding: 0 4vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: 2rem;
+}
+.paralax2 {
+  /* como tem menu e rodapé visíveis (10vh cada), define-se como altura 80vh. */
+  min-height: 80vh;
+  background-image: url("../images/computer.6623d9da2342.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  align-items: start;
+}
+.caixasPost {
+  background-color: rgb(238, 248, 248);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.caixasPost div {
+  min-width: 400px;
+  min-height: 600px;
+  padding: 25px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 10px;                 /* arredonda os cantos */
+  box-shadow: 5px 5px 15px;
+}
+.novoPost {
+margin: 10px;
+}
+.caixasEscola {
+  background-color: rgb(238, 248, 248);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.caixasEscola div {
+  min-width: 400px;
+  min-height: 600px;
+  padding: 25px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 10px;                 /* arredonda os cantos */
+  box-shadow: 5px 5px 15px;
+}
+.caixasEscola div img {
+  padding: 10px;
+}
+.caixasCertificado {
+  background-color: rgb(238, 248, 248);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.caixasCertificado div {
+  float: left;
+  min-width: 100px;
+  min-height: 200px;
+  padding: 25px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 10px;                 /* arredonda os cantos */
+  box-shadow: 5px 5px 15px ;
+}
+.caixasCertificado div p {
+margin: 0;
+}
+.caixasCompetencias {
+  background-color: rgb(238, 248, 248);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.caixasCompetencias div {
+  float: left;
+  min-width: 100px;
+  min-height: 200px;
+  padding: 25px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 10px;                 /* arredonda os cantos */
+  box-shadow: 5px 5px 15px ;
+}
+.caixasCompetencias div p {
+margin: 0;
+}
+.mapa{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  margin: 50px;
+}

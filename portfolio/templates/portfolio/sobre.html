@@ -1,0 +1,223 @@
+<!-- home.html -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+{% block main %}
+<h1>
+    Educacao
+</h1>
+<div class="caixasEscola">
+ {% for escola in escolas %}
+    <div>
+        <p class="text-center">
+           {{escola.nome}}
+        </p>
+             <img src="{{escola.logo.url}} " width="250" height="250" class="rounded mx-auto d-block">
+        <p>
+            Ensino : {{escola.tipo_ensino}}
+        </p>
+        <p>
+            Curso : {{escola.nome_curso}}
+        </p>
+        <p>
+            Periodo Letivo : {{escola.periodo}}
+        </p>
+        <p>
+           Morada: {{escola.morada}}
+        </p>
+         <img src="{{escola.local.url}} " width="400" height="250">
+    </div>
+    {% endfor %}
+</div>
+<h1>
+    Certificados
+</h1>
+{% for certificado in certificados %}
+<div class="caixasCertificado">
+        <div>
+            <h4>
+                {{certificado.nome}}
+            </h4>
+            <p>
+                Referencia : {{certificado.referencia}}
+            </p>
+            <p>
+                Ano : {{certificado.periodo}}
+            </p>
+            <p>
+                Empresa : {{certificado.empresa}}
+            </p>
+            <a href="{{certificado.formador}}">Formador</a>
+            <br>
+            <a href="{{certificado.ficheiro.url}}">Certificado</a>
+        </div>
+</div>
+{% endfor %}
+<h1>
+    Licenciatura
+</h1>
+{% for cadeira in cadeiras %}
+    <div class="caixasLicenciatura">
+    <div>
+        <h4 class="text-center">
+            {{cadeira.nome}}
+        </h4>
+        <p>
+             Ano : {{cadeira.ano}}º
+        </p>
+        <p>
+            Semestre: {{cadeira.semestre}}º
+        </p>
+        <p>
+            ECTS: {{cadeira.Etcs}}
+        </p>
+        <p>
+            Ano-Letivo: {{cadeira.ano_letivo}}
+        </p>
+        <p>
+            Topicos Abordados : {{cadeira.topicos}}
+        </p>
+        <p>
+             Ranking(1⭐-5⭐): {{cadeira.ranking}}
+        </p>
+        {% for professor in cadeira.professor.all %}
+
+        <p>Professores:</p>
+        <p>
+             LinkedIn: <a href="{{professor.linkdln}}">{{professor.nome}}</a>
+        </p>
+        <p>
+             Perfil Académico {{professor.nome}}: <a href="{{professor.link_professor}}">Lusofona</a>
+        </p>
+          {% endfor %}
+        <a href="{{cadeira.link}}">Link da Cadeira</a>
+        <br>
+        <img src="{{cadeira.imagem.url}}" width="100" height="100"  class="rounded mx-auto d-block">
+    </div>
+    </div>
+{% endfor %}
+<h1>
+   Competências Pessoais
+</h1>
+{% for competencia in competencias %}
+<div class="caixasCompetencias">
+    <div>
+        <h4>
+            {{competencia.titulo}}
+        </h4>
+        <p>
+            Lista de Projetos Envolvidos
+        </p>
+         {% for projeto in competencia.projeto.all %}
+        <p>
+            {{projeto.titulo}}
+        </p>
+        {% endfor %}
+         <p>
+            Lista de Cadeiras Envolvidas
+        </p>
+         {% for cadeira in competencia.cadeira.all %}
+        <p>
+            {{cadeira.nome}}
+        </p>
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
+<h1>
+      Competências Tecnicas
+</h1>
+<div>
+        Linguangens de Programacao
+    <ul>
+        <li>
+            Java
+        </li>
+        <li>
+            Kotlin
+        </li>
+        <li>
+            HTML
+        </li>
+        <li>
+            DJANGO
+        </li>
+        <li>
+            CSS
+        </li>
+        <li>
+            MYSQL
+        </li>
+        <li>
+            C and C#
+        </li>
+        <li>
+            Python
+        </li>
+        <li>
+            Java
+        </li>
+    </ul>
+    Tecnologias
+    <ul>
+
+    </ul>
+</div>
+<h1>
+    Competências Organizativas
+</h1>
+<div>
+<ul>
+    <li>Gestão de tempo</li>
+    <li>Organização mental</li>
+    <li>Competências de organização física</li>
+    <li>Atitude positiva</li>
+    <li>Resiliência e resolução de problemas</li>
+    <li>Capacidade para trabalhar em equipa</li>
+    <li>Capacidade de liderança</li>
+    <li>Delegar tarefas</li>
+
+</ul>
+</div>
+<h1>
+    Competências Sociais
+</h1>
+<div>
+<ul>
+    <li>Empatia</li>
+    <li>Comunicação</li>
+    <li>Adaptabilidade</li>
+    <li>Cooperação</li>
+    <li>Resolução de problemas</li>
+    <li>Gestão de tempo</li>
+    <li>Saber ouvir</li>
+    <li>Delegar tarefas</li>
+</ul>
+</div>
+<h1>
+    Competências Linguísticas
+</h1>
+<div class="caixasCompetencias">
+    {% for lingua in linguagens %}
+    <div>
+        <h4>
+            {{lingua.nome}}
+        </h4>
+        <p>
+            {% if lingua.linke_text|length > 0  %}
+             Certificado Oficial Europeu: <a href="{{lingua.link}}">Certificado</a>
+            {% endif %}
+        </p>
+        <p>
+            Coomprensão Oral e Leitura: {{lingua.compreensao}}
+        </p>
+        <p>
+           Interacção Oral e Produção Oral: {{lingua.conversacao}}
+        </p>
+        <p>
+            Escrita: {{lingua.escrita}}
+        </p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+{% block main %}
+<h1 class="text-center">
+    Lista de Posts
+</h1>
+<div class="caixasPost">
+    {% for post in posts %}
+    <div>
+        <h4 class="text-center">
+            {{post.titulo}}
+        </h4>
+        <p>
+            Publicado por: {{post.autor}}
+        </p>
+    <p>
+        Descrição : {{post.titulo}}
+    </p>
+        <p>
+            <a href="{{post.link}}">Link do Projeto</a>
+        </p>
+        {% if post.imagem %}
+        <img src="{{post.imagem.url}} " width="250" height="250" class="rounded mx-auto d-block">
+        {% endif %}
+        <br>
+        <br>
+        <a href="{% url 'portfolio:post_edita' post.id %}" class="btn btn-warning">Editar</a>
+    </div>
+   {% endfor %}
+</div>
+<div class="novoPost">
+    Pretende Adicionar um novo Post?
+    <a href="{% url 'portfolio:post_novo' %}" class="btn btn-info btn-block">Carregue Aqui</a>
+</div>
+{% endblock %}
