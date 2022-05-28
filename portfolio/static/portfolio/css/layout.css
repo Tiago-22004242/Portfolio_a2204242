@@ -216,7 +216,7 @@ margin: 10px;
 .caixasCertificado div p {
 margin: 0;
 }
-.caixasCompetencias {
+.caixas {
   background-color: rgb(238, 248, 248);
   display: flex;
   justify-content: start;
@@ -224,7 +224,7 @@ margin: 0;
   flex-flow: row;
   flex-wrap: wrap;
 }
-.caixasCompetencias div {
+.caixas div {
   min-width: 100px;
   min-height: 200px;
   padding: 25px;
@@ -233,7 +233,7 @@ margin: 0;
   border-radius: 10px;                 /* arredonda os cantos */
   box-shadow: 5px 5px 15px ;
 }
-.caixasCompetencias div p {
+.caixas div p {
 margin: 0;
 }
 .mapa{
@@ -242,19 +242,4 @@ margin: 0;
   align-items: center;
   flex-flow: row wrap;
   margin: 50px;
-}
-.caixasInteresses {
-  min-width: 200px;
-  min-height: 280px;
-  padding: 25px;
-  margin: 10px;
-  background-color: white;
-  border-radius: 10px;                 /* arredonda os cantos */
-  box-shadow: 5px 5px 15px ;
-}
-.caixasInterensses div p {
-margin: 0;
-}
-.caixasInterensses div img {
-margin : 20px;
 }
