@@ -236,6 +236,9 @@ margin: 0;
 .caixas div p {
 margin: 0;
 }
+.caixas div img {
+    margin: 20px;
+}
 .mapa{
   display: flex;
   justify-content: center;
