@@ -219,10 +219,10 @@ margin: 0;
 .caixasCompetencias {
   background-color: rgb(238, 248, 248);
   display: flex;
-  flex-flow: row wrap;
+  justify-content: start;
+  align-items : space-around;
 }
 .caixasCompetencias div {
-  float: left;
   min-width: 100px;
   min-height: 200px;
   padding: 25px;

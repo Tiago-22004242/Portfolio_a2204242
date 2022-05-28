@@ -32,8 +32,8 @@
 <h1>
     Certificados
 </h1>
-{% for certificado in certificados %}
 <div class="caixasCertificado">
+    {% for certificado in certificados %}
         <div>
             <h4>
                 {{certificado.nome}}
@@ -51,13 +51,13 @@
             <br>
             <a href="{{certificado.ficheiro.url}}">Certificado</a>
         </div>
+    {% endfor %}
 </div>
-{% endfor %}
 <h1>
     Licenciatura
 </h1>
-{% for cadeira in cadeiras %}
     <div class="caixasLicenciatura">
+        {% for cadeira in cadeiras %}
     <div>
         <h4 class="text-center">
             {{cadeira.nome}}
@@ -94,13 +94,13 @@
         <br>
         <img src="{{cadeira.imagem.url}}" width="300" height="300"  class="rounded mx-auto d-block">
     </div>
+        {% endfor %}
     </div>
-{% endfor %}
 <h1>
    Competências Pessoais
 </h1>
-{% for competencia in competencias %}
 <div class="caixasCompetencias">
+    {% for competencia in competencias %}
     <div>
         <h4>
             {{competencia.titulo}}
@@ -122,8 +122,8 @@
         </p>
         {% endfor %}
     </div>
+    {% endfor %}
 </div>
-{% endfor %}
 <h1>
       Competências Tecnicas
 </h1>
@@ -241,8 +241,8 @@
     Interesses e Hobbies
 </h1>
 <div class="caixasLicenciatura">
+    {% for interesse in interesses %}
     <div>
-        {% for interesse in interesses %}
         <p>
             Titulo : {{interesse.titulo}}
         </p>
@@ -253,7 +253,7 @@
         <p>
             <a href="{{interesse.link}}">Site</a>
         </p>
-        {% endfor %}
     </div>
+    {% endfor %}
 </div>
 {% endblock %}
