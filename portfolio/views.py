@@ -177,7 +177,6 @@ def apaga_projeto_view(request, projeto_id):
     return HttpResponseRedirect(reverse('portfolio:projetos'))
 
 def view_login(request):
-
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -200,5 +199,5 @@ def view_login(request):
 def view_logout(request):
     logout(request)
     return render(request, 'portfolio/login.html', {
-                'message': 'Foi desconetado.'
-            })
+        'message': 'Foi desconectado.'
+    })
