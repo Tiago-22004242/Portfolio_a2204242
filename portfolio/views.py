@@ -1,10 +1,12 @@
 import matplotlib
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from matplotlib import pyplot as plt
 import datetime
 from .models import Post, Escola, Cadeira, Pessoa, Certificado, Competencia, Linguagem, PontuacaoQuizz, Projeto, \
     Tecnologia, TrabalhoCurso, Laboratorio, Noticia, Comentarios, Interesse
-from .forms import PostForm
+from .forms import PostForm, ProjetoForm
 from django.shortcuts import render
 from django.urls import reverse
 
@@ -142,3 +144,61 @@ def quizz(request):
         r.save()
     desenha_grafico_resultados()
     return render(request,'portfolio/web.html')
+
+def novo_projeto_view(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('portfolio:login'))
+
+    if request.method == 'POST':
+        form = ProjetoForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:projetos'))
+    form = ProjetoForm()
+    context = {'form': form}
+    return render(request, 'portfolio/projeto_novo.html', context)
+
+@login_required
+def edita_projeto_view(request, projeto_id):
+    projeto = Projeto.objects.get(id=projeto_id)
+    if request.method == 'POST':
+        form = ProjetoForm(request.POST,request.FILES,instance=projeto)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:projetos'))
+    else:
+        form = ProjetoForm(instance=projeto)
+    context = {'form': form, 'projeto_id': projeto_id}
+    return render(request, 'portfolio/projeto_edita.html', context)
+
+
+def apaga_projeto_view(request, projeto_id):
+    Projeto.objects.get(id=projeto_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:projetos'))
+
+def view_login(request):
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(
+            request,
+            username=username,
+            password=password)
+
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse('portfolio:home'))
+        else:
+            return render(request, 'portfolio/login.html', {
+                'message': 'Credenciais invalidas.'
+            })
+
+    return render(request, 'portfolio/login.html')
+
+def view_logout(request):
+    logout(request)
+    return render(request, 'portfolio/login.html', {
+                'message': 'Foi desconetado.'
+            })

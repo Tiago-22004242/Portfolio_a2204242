@@ -71,8 +71,15 @@
         {% endif %}
         {% endfor %}
         {% endfor %}
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'portfolio:projeto_edita' projeto.id %}" class="btn btn-warning">Editar</a>
+        {% endif %}
     </div>
     {% endfor %}
+</div>
+<div class="novoPost">
+    Pretende Adicionar um novo Projeto?
+    <a href="{% url 'portfolio:projeto_novo' %}" class="btn btn-info btn-block">Carregue Aqui</a>
 </div>
 <h1>
     Trabalhos Final de Curso
@@ -128,4 +135,6 @@
         {% endfor %}
     </div>
 </div>
+ <a href="{% url 'portfolio:login' %}" class="btn btn-info">Login</a>
+ <a href="{% url 'portfolio:logout' %}" class="btn btn-danger">Logout</a>
 {% endblock %}

@@ -13,5 +13,10 @@ urlpatterns = [
     path('post_novo/', views.novo_post_view,name = 'post_novo'),
     path('post_edita/<int:post_id>', views.edita_post_view,name='post_edita'),
     path('post_apaga/<int:post_id>', views.apaga_post_view,name='post_apaga'),
-    path('quizz', views.quizz, name='quizz')
+    path('quizz', views.quizz, name='quizz'),
+    path('projeto_novo/', views.novo_projeto_view, name='projeto_novo'),
+    path('projeto_edita/<int:projeto_id>', views.edita_projeto_view,name='projeto_edita'),
+    path('projeto_apaga/<int:projeto_id>', views.apaga_projeto_view,name='projeto_apaga'),
+    path('login/', views.view_login, name='login'),
+    path('logout/', views.view_logout, name='logout'),
 ]

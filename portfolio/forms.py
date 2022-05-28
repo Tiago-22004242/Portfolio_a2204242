@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post, Projeto
 
 
 class PostForm(forms.ModelForm):
@@ -25,3 +25,8 @@ class PostForm(forms.ModelForm):
             'link': 'Link',
             'descricao': 'Descrição',
         }
+
+class ProjetoForm(forms.ModelForm):
+    class Meta:
+        model = Projeto
+        fields = '__all__'
