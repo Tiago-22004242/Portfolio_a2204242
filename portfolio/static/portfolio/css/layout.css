@@ -243,8 +243,7 @@ margin: 0;
   flex-flow: row wrap;
   margin: 50px;
 }
-.caixasInterensses {
-  float: left;
+.caixasInteresses {
   min-width: 200px;
   min-height: 280px;
   padding: 25px;
