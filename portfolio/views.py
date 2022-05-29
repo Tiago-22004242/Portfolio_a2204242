@@ -202,7 +202,7 @@ def view_logout(request):
         'message': 'Foi desconectado.'
     })
 
-def novo_projeto_view(request):
+def novo_comentario_view(request):
     if request.method == 'POST':
         form = ComentarioForm(request.POST,request.FILES)
         if form.is_valid():
@@ -213,7 +213,7 @@ def novo_projeto_view(request):
     return render(request, 'portfolio/comentario_novo.html', context)
 
 @login_required
-def edita_projeto_view(request, comentario_id):
+def edita_comentario_view(request, comentario_id):
     post = Comentarios.objects.get(id=comentario_id)
     if request.method == 'POST':
         form = ComentarioForm(request.POST,request.FILES,instance=post)
@@ -226,6 +226,6 @@ def edita_projeto_view(request, comentario_id):
     return render(request, 'portfolio/comentario_edita.html', context)
 
 
-def apaga_projeto_view(request, comentario_id):
+def apaga_comentario_view(request, comentario_id):
     Comentarios.objects.get(id=comentario_id).delete()
     return HttpResponseRedirect(reverse('portfolio:web'))
