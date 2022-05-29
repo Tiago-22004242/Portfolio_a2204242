@@ -1,7 +1,7 @@
 {% extends 'portfolio/web.html' %}
 {% load static %}
 {% block main %}
-<h3>Post</h3>
+<h3>Comentario</h3>
     <form action="{% url 'portfolio:comentario_edita' comentario_id %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}
