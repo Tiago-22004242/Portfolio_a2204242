@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Projeto
+from .models import Post, Projeto, Comentarios
 
 
 class PostForm(forms.ModelForm):
@@ -29,4 +29,9 @@ class PostForm(forms.ModelForm):
 class ProjetoForm(forms.ModelForm):
     class Meta:
         model = Projeto
+        fields = '__all__'
+
+class ComentarioForm(forms.ModelForm):
+    class Meta:
+        model = Comentarios
         fields = '__all__'

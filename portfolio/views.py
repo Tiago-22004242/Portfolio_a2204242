@@ -6,7 +6,7 @@ from matplotlib import pyplot as plt
 import datetime
 from .models import Post, Escola, Cadeira, Pessoa, Certificado, Competencia, Linguagem, PontuacaoQuizz, Projeto, \
     Tecnologia, TrabalhoCurso, Laboratorio, Noticia, Comentarios, Interesse
-from .forms import PostForm, ProjetoForm
+from .forms import PostForm, ProjetoForm, ComentarioForm
 from django.shortcuts import render
 from django.urls import reverse
 
@@ -201,3 +201,31 @@ def view_logout(request):
     return render(request, 'portfolio/login.html', {
         'message': 'Foi desconectado.'
     })
+
+def novo_projeto_view(request):
+    if request.method == 'POST':
+        form = ComentarioForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:web'))
+    form = ComentarioForm()
+    context = {'form': form}
+    return render(request, 'portfolio/comentario_novo.html', context)
+
+@login_required
+def edita_projeto_view(request, comentario_id):
+    post = Comentarios.objects.get(id=comentario_id)
+    if request.method == 'POST':
+        form = ComentarioForm(request.POST,request.FILES,instance=post)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:web'))
+    else:
+        form = ComentarioForm(instance=post)
+    context = {'form': form, 'comentario_id': comentario_id}
+    return render(request, 'portfolio/comentario_edita.html', context)
+
+
+def apaga_projeto_view(request, comentario_id):
+    Comentarios.objects.get(id=comentario_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:web'))
