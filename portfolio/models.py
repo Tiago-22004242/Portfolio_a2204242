@@ -52,7 +52,7 @@ class Tecnologia(models.Model):
         return self.nome
 
 class TrabalhoCurso(models.Model):
-    titulo = models.CharField(max_length=30)
+    titulo = models.CharField(max_length=120)
     autor = models.ManyToManyField(Pessoa,related_name='Autor')
     orientador = models.ManyToManyField(Pessoa,related_name='Orientador')
     ano = models.IntegerField()
