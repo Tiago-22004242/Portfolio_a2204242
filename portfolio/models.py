@@ -57,7 +57,7 @@ class TrabalhoCurso(models.Model):
     orientador = models.ManyToManyField(Pessoa,related_name='Orientador')
     ano = models.IntegerField()
     resumo = models.CharField(max_length=100)
-    descricao = models.CharField(max_length=500)
+    descricao = models.TextField()
     github = models.URLField(blank=True)
     youtube = models.URLField(blank=True)
     relatorio = models.FileField(upload_to='trabalhos/')
