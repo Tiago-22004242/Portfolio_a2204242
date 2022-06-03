@@ -22,4 +22,7 @@ urlpatterns = [
     path('comentario_novo/', views.novo_comentario_view, name='comentario_novo'),
     path('comentario_edita/<int:comentario_id>', views.edita_comentario_view,name='comentario_edita'),
     path('comentario_apaga/<int:comentario_id>', views.apaga_comentario_view,name='comentario_apaga'),
+    path('trabalho_novo/', views.novo_trabalho_view, name='trabalho_novo'),
+    path('trabalho_edita/<int:trabalho_id>', views.edita_trabalho_view,name='trabalho_edita'),
+    path('trabalho_apaga/<int:trabalho_id>', views.apaga_trabalho_view,name='trabalho_apaga'),
 ]

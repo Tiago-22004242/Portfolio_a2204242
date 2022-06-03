@@ -90,6 +90,7 @@
         <p>
             Titulo : {{trabalho.titulo}}
         </p>
+         <img src="{{trabalho.imagem.url}} " width="250" height="250" class="rounded mx-auto d-block">
         <p>
             Autores:
         </p>
@@ -133,6 +134,13 @@
         {% endif %}
         <a href="{{trabalho.relatorio.url}}">Relatorio</a>
         {% endfor %}
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'portfolio:trabalho_edita' trabalho.id %}" class="btn btn-warning">Editar</a>
+        {% endif %}
+    </div>
+    <div class="novoPost">
+    Pretende Adicionar um novo Trabalho de Curso?
+    <a href="{% url 'portfolio:trabalho_novo' %}" class="btn btn-info btn-block">Carregue Aqui</a>
     </div>
 </div>
 {% endblock %}

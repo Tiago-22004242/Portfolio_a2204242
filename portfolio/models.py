@@ -53,7 +53,7 @@ class Tecnologia(models.Model):
 
 class TrabalhoCurso(models.Model):
     titulo = models.CharField(max_length=30)
-    autor = models.ForeignKey(Pessoa,on_delete=models.CASCADE)
+    autor = models.ManyToManyField(Pessoa,related_name='Autor')
     orientador = models.ManyToManyField(Pessoa,related_name='Orientador')
     ano = models.IntegerField()
     resumo = models.CharField(max_length=100)
@@ -61,6 +61,7 @@ class TrabalhoCurso(models.Model):
     github = models.URLField(blank=True)
     youtube = models.URLField(blank=True)
     relatorio = models.FileField(upload_to='trabalhos/')
+    imagem = models.ImageField(upload_to='trabalhos/',default='')
 
     def __str__(self):
         return self.titulo

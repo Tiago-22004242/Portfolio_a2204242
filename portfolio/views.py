@@ -6,7 +6,7 @@ from matplotlib import pyplot as plt
 import datetime
 from .models import Post, Escola, Cadeira, Pessoa, Certificado, Competencia, Linguagem, PontuacaoQuizz, Projeto, \
     Tecnologia, TrabalhoCurso, Laboratorio, Noticia, Comentarios, Interesse
-from .forms import PostForm, ProjetoForm, ComentarioForm
+from .forms import PostForm, ProjetoForm, ComentarioForm, TrabalhoForm
 from django.shortcuts import render
 from django.urls import reverse
 
@@ -229,3 +229,31 @@ def edita_comentario_view(request, comentario_id):
 def apaga_comentario_view(request, comentario_id):
     Comentarios.objects.get(id=comentario_id).delete()
     return HttpResponseRedirect(reverse('portfolio:web'))
+
+def novo_trabalho_view(request):
+    if request.method == 'POST':
+        form = TrabalhoForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:projetos'))
+    form = TrabalhoForm()
+    context = {'form': form}
+    return render(request, 'portfolio/trabalho_novo.html', context)
+
+@login_required
+def edita_trabalho_view(request, trabalho_id):
+    post = TrabalhoCurso.objects.get(id=trabalho_id)
+    if request.method == 'POST':
+        form = TrabalhoForm(request.POST,request.FILES,instance=post)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:projetos'))
+    else:
+        form = TrabalhoForm(instance=post)
+    context = {'form': form, 'trabalho_id': trabalho_id}
+    return render(request, 'portfolio/trabalho_edita.html', context)
+
+
+def apaga_trabalho_view(request, trabalho_id):
+    TrabalhoCurso.objects.get(id=trabalho_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:projetos'))
