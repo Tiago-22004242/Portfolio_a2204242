@@ -203,6 +203,9 @@ def view_logout(request):
     })
 
 def novo_comentario_view(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('portfolio:login'))
+
     if request.method == 'POST':
         form = ComentarioForm(request.POST,request.FILES)
         if form.is_valid():
@@ -231,6 +234,9 @@ def apaga_comentario_view(request, comentario_id):
     return HttpResponseRedirect(reverse('portfolio:web'))
 
 def novo_trabalho_view(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('portfolio:login'))
+
     if request.method == 'POST':
         form = TrabalhoForm(request.POST,request.FILES)
         if form.is_valid():
