@@ -250,7 +250,7 @@ def novo_trabalho_view(request):
 def edita_trabalho_view(request, trabalho_id):
     post = TrabalhoCurso.objects.get(id=trabalho_id)
     if request.method == 'POST':
-        form = TrabalhoForm(request.POST,request.FILES,instance=post)
+        form = ComentarioForm(request.POST,request.FILES,instance=post)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('portfolio:projetos'))
@@ -262,4 +262,4 @@ def edita_trabalho_view(request, trabalho_id):
 
 def apaga_trabalho_view(request, trabalho_id):
     TrabalhoCurso.objects.get(id=trabalho_id).delete()
-    return HttpResponseRedirect(reverse('portfolio:projetos'))
+    return HttpResponseRedirect(reverse('portfolio:web'))

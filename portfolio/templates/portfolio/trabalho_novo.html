@@ -2,6 +2,7 @@
 {% load static %}
 {% block main %}
 <h3>Novo Trabalho de Curso</h3>
+
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}
