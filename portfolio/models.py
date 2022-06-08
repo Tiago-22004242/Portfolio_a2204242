@@ -31,10 +31,10 @@ class Pessoa(models.Model):
     link_aluno = models.URLField(blank=True)
 
     def __str__(self):
-        if self.link_aluno == "":
-             return "Professor " + self.nome
+        if self.link_professor == "":
+             return "Aluno " + self.nome
         else:
-            return "Aluno " + self.nome
+            return "Professor " + self.nome
 
 class Tecnologia(models.Model):
     nome = models.CharField(max_length=30)
