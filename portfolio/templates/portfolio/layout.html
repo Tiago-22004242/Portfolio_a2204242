@@ -3,6 +3,7 @@
 {% load static %}
 <html>
 <link rel="stylesheet" href="{% static 'portfolio/css/layout.css' %}">
+<script src="{%static 'portfolio/js/APIs.js'%}"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Tiago Rodrigues">
@@ -10,7 +11,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
     </style>
 </head>
-<body>
+<body  onload="renderTime();">
     <header>
         <div>
             Tiago Rodrigues
@@ -30,6 +31,7 @@
             {% block main %}
             {% endblock main %}
     </main>
+    <p id = "relogio" class="clock"></p>
     <footer>
         <div>
             ULHT 2022

@@ -246,3 +246,8 @@ margin: 0;
   flex-flow: row wrap;
   margin: 50px;
 }
+.clock {
+ display: flex;
+ justify-content: flex-end;
+ align-items: right;
+}
