@@ -57,9 +57,16 @@
             <a href="{{certificado.formador}}">Formador</a>
             <br>
             <a href="{{certificado.ficheiro.url}}">Certificado</a>
+            {% if request.user.is_authenticated %}
+        <a href="{% url 'portfolio:certificado_edita' certificado.id %}" class="btn btn-warning">Editar</a>
+        {% endif %}
         </div>
     {% endfor %}
 </div>
+ <div class="novoPost">
+    Pretende Adicionar um nova Certificado?
+    <a href="{% url 'portfolio:certificado_novo' %}" class="btn btn-info btn-block">Carregue Aqui</a>
+  </div>
 <h1>
     Licenciatura
 </h1>
@@ -135,9 +142,16 @@
             {{cadeira.nome}}
         </p>
         {% endfor %}
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'portfolio:competencia_edita' competencia.id %}" class="btn btn-warning">Editar</a>
+        {% endif %}
     </div>
     {% endfor %}
 </div>
+ <div class="novoPost">
+    Pretende Adicionar um nova Competencia?
+    <a href="{% url 'portfolio:competencia_novo' %}" class="btn btn-info btn-block">Carregue Aqui</a>
+  </div>
 <h1>
       Competências Tecnicas
 </h1>
@@ -248,9 +262,16 @@
         <p>
             Escrita: {{lingua.escrita}}
         </p>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'portfolio:linguagem_edita' linguagem.id %}" class="btn btn-warning">Editar</a>
+        {% endif %}
     </div>
     {% endfor %}
 </div>
+<div class="novoPost">
+    Pretende Adicionar um nova Competencia Linguistica?
+    <a href="{% url 'portfolio:linguagem_novo' %}" class="btn btn-info btn-block">Carregue Aqui</a>
+  </div>
 <h1>
     Interesses e Hobbies
 </h1>
@@ -267,7 +288,14 @@
         <p>
             <a href="{{interesse.link}}">Site</a>
         </p>
+         {% if request.user.is_authenticated %}
+        <a href="{% url 'portfolio:interesse_edita' interesse.id %}" class="btn btn-warning">Editar</a>
+        {% endif %}
     </div>
     {% endfor %}
 </div>
+<div class="novoPost">
+    Pretende Adicionar um novo Interesse?
+    <a href="{% url 'portfolio:interesse_novo' %}" class="btn btn-info btn-block">Carregue Aqui</a>
+  </div>
 {% endblock %}

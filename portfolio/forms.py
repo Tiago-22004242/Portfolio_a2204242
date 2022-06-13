@@ -1,5 +1,6 @@
 from django import forms
-from .models import Post, Projeto, Comentarios, TrabalhoCurso, Escola, Cadeira, Tecnologia, Noticia
+from .models import Post, Projeto, Comentarios, TrabalhoCurso, Escola, Cadeira, Tecnologia, Noticia, Competencia, \
+    Certificado, Linguagem, Interesse
 
 
 class PostForm(forms.ModelForm):
@@ -59,4 +60,24 @@ class TecnologiaForm(forms.ModelForm):
 class NoticiaForm(forms.ModelForm):
     class Meta:
         model = Noticia
+        fields = '__all__'
+
+class CompetenciaForm(forms.ModelForm):
+    class Meta:
+        model = Competencia
+        fields = '__all__'
+
+class CertificadoForm(forms.ModelForm):
+    class Meta:
+        model = Certificado
+        fields = '__all__'
+
+class LinguagemForm(forms.ModelForm):
+    class Meta:
+        model = Linguagem
+        fields = '__all__'
+
+class InteresseForm(forms.ModelForm):
+    class Meta:
+        model = Interesse
         fields = '__all__'

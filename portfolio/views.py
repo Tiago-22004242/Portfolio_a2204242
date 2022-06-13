@@ -7,7 +7,7 @@ import datetime
 from .models import Post, Escola, Cadeira, Pessoa, Certificado, Competencia, Linguagem, PontuacaoQuizz, Projeto, \
     Tecnologia, TrabalhoCurso, Laboratorio, Noticia, Comentarios, Interesse
 from .forms import PostForm, ProjetoForm, ComentarioForm, TrabalhoForm, EscolaForm, CadeiraForm, TecnologiaForm, \
-    NoticiaForm
+    NoticiaForm, CompetenciaForm, CertificadoForm, LinguagemForm, InteresseForm
 from django.shortcuts import render
 from django.urls import reverse
 
@@ -384,3 +384,123 @@ def edita_noticia_view(request, noticia_id):
 def apaga_noticia_view(request, noticia_id):
     Noticia.objects.get(id=noticia_id).delete()
     return HttpResponseRedirect(reverse('portfolio:web'))
+
+def novo_competencia_view(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('portfolio:login'))
+
+    if request.method == 'POST':
+        form = CompetenciaForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:sobre'))
+    form = CompetenciaForm()
+    context = {'form': form}
+    return render(request, 'portfolio/competencia_novo.html', context)
+
+@login_required
+def edita_competencia_view(request, competencia_id):
+    post = Competencia.objects.get(id=competencia_id)
+    if request.method == 'POST':
+        form = CompetenciaForm(request.POST,request.FILES,instance=post)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:sobre'))
+    else:
+        form = NoticiaForm(instance=post)
+    context = {'form': form, 'competencia_id': competencia_id}
+    return render(request, 'portfolio/competencia_edita.html', context)
+
+def apaga_competencia_view(request, competencia_id):
+    Competencia.objects.get(id=competencia_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:sobre'))
+
+def novo_certificado_view(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('portfolio:login'))
+
+    if request.method == 'POST':
+        form = CertificadoForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:sobre'))
+    form = CertificadoForm()
+    context = {'form': form}
+    return render(request, 'portfolio/certificado_novo.html', context)
+
+@login_required
+def edita_certificado_view(request, certificado_id):
+    post = Certificado.objects.get(id=certificado_id)
+    if request.method == 'POST':
+        form = CertificadoForm(request.POST,request.FILES,instance=post)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:sobre'))
+    else:
+        form = CertificadoForm(instance=post)
+    context = {'form': form, 'certificado_id': certificado_id}
+    return render(request, 'portfolio/certificado_edita.html', context)
+
+def apaga_certificado_view(request, certificado_id):
+    Certificado.objects.get(id=certificado_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:sobre'))
+
+def novo_linguagem_view(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('portfolio:login'))
+
+    if request.method == 'POST':
+        form = LinguagemForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:sobre'))
+    form = LinguagemForm()
+    context = {'form': form}
+    return render(request, 'portfolio/linguagem_novo.html', context)
+
+@login_required
+def edita_linguagem_view(request, linguagem_id):
+    post = Linguagem.objects.get(id=linguagem_id)
+    if request.method == 'POST':
+        form = LinguagemForm(request.POST,request.FILES,instance=post)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:sobre'))
+    else:
+        form = LinguagemForm(instance=post)
+    context = {'form': form, 'linguagem_id': linguagem_id}
+    return render(request, 'portfolio/linguagem_edita.html', context)
+
+def apaga_linguagem_view(request, linguagem_id):
+    Linguagem.objects.get(id=linguagem_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:sobre'))
+
+def novo_interesse_view(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('portfolio:login'))
+
+    if request.method == 'POST':
+        form = InteresseForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:sobre'))
+    form = InteresseForm()
+    context = {'form': form}
+    return render(request, 'portfolio/interesse_novo.html', context)
+
+@login_required
+def edita_interesse_view(request, interesse_id):
+    post = Interesse.objects.get(id=interesse_id)
+    if request.method == 'POST':
+        form = InteresseForm(request.POST,request.FILES,instance=post)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:sobre'))
+    else:
+        form = InteresseForm(instance=post)
+    context = {'form': form, 'interesse_id': interesse_id}
+    return render(request, 'portfolio/interesse_edita.html', context)
+
+def apaga_interesse_view(request, interesse_id):
+    Interesse.objects.get(id=interesse_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:sobre'))
