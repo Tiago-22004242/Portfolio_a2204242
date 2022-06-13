@@ -28,19 +28,26 @@
            Site: <a href="{{tecnologia.link}}">Website</a>
         </p>
          <p>
-            Back-End : {{tecnologia.BackEnd}
+            Back-End : {{tecnologia.BackEnd}}
         </p>
         <p>
-            Front-End : {{tecnologia.FrontEnd}
+            Front-End : {{tecnologia.FrontEnd}}
         </p>
         {% if is_tecnologia.BackEnd == False and is_tecnologia.FrontEnd == False %}}
         <p>
-            Outra Tecnologia: {{tecnologia.Outra}
+            Outra Tecnologia: {{tecnologia.Outra}}
         </p>
+        {% endif %}
+         {% if request.user.is_authenticated %}
+        <a href="{% url 'portfolio:tecnologia_edita' tecnologia.id %}" class="btn btn-warning">Editar</a>
         {% endif %}
     </div>
     {% endfor %}
 </div>
+<div class="novoPost">
+    Pretende Adicionar um nova Tecnologia?
+    <a href="{% url 'portfolio:tecnologia_novo' %}" class="btn btn-info btn-block">Carregue Aqui</a>
+  </div>
 <h1>
     Mapa do Site
 </h1>
@@ -125,9 +132,16 @@
         <p>
             <a href="{{noticia.link}}">Fonte</a>
         </p>
+         {% if request.user.is_authenticated %}
+        <a href="{% url 'portfolio:noticia_edita' noticia.id %}" class="btn btn-warning">Editar</a>
+        {% endif %}
     </div>
     {% endfor %}
 </div>
+<div class="novoPost">
+    Pretende Adicionar um nova Noticia?
+    <a href="{% url 'portfolio:noticia_novo' %}" class="btn btn-info btn-block">Carregue Aqui</a>
+  </div>
 <h1>
     Tecnicas e Efeitos marcantes
 </h1>

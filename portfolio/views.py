@@ -6,7 +6,8 @@ from matplotlib import pyplot as plt
 import datetime
 from .models import Post, Escola, Cadeira, Pessoa, Certificado, Competencia, Linguagem, PontuacaoQuizz, Projeto, \
     Tecnologia, TrabalhoCurso, Laboratorio, Noticia, Comentarios, Interesse
-from .forms import PostForm, ProjetoForm, ComentarioForm, TrabalhoForm
+from .forms import PostForm, ProjetoForm, ComentarioForm, TrabalhoForm, EscolaForm, CadeiraForm, TecnologiaForm, \
+    NoticiaForm
 from django.shortcuts import render
 from django.urls import reverse
 
@@ -262,4 +263,124 @@ def edita_trabalho_view(request, trabalho_id):
 
 def apaga_trabalho_view(request, trabalho_id):
     TrabalhoCurso.objects.get(id=trabalho_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:web'))
+
+def novo_escola_view(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('portfolio:login'))
+
+    if request.method == 'POST':
+        form = EscolaForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:sobre'))
+    form = EscolaForm()
+    context = {'form': form}
+    return render(request, 'portfolio/escola_novo.html', context)
+
+@login_required
+def edita_escola_view(request, escola_id):
+    post = Escola.objects.get(id=escola_id)
+    if request.method == 'POST':
+        form = EscolaForm(request.POST,request.FILES,instance=post)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:sobre'))
+    else:
+        form = EscolaForm(instance=post)
+    context = {'form': form, 'escola_id': escola_id}
+    return render(request, 'portfolio/escola_edita.html', context)
+
+def apaga_escola_view(request, escola_id):
+    Escola.objects.get(id=escola_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:sobre'))
+
+def novo_cadeira_view(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('portfolio:login'))
+
+    if request.method == 'POST':
+        form = CadeiraForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:sobre'))
+    form = CadeiraForm()
+    context = {'form': form}
+    return render(request, 'portfolio/cadeira_novo.html', context)
+
+@login_required
+def edita_cadeira_view(request, cadeira_id):
+    post = Cadeira.objects.get(id=cadeira_id)
+    if request.method == 'POST':
+        form = CadeiraForm(request.POST,request.FILES,instance=post)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:sobre'))
+    else:
+        form = CadeiraForm(instance=post)
+    context = {'form': form, 'cadeira_id': cadeira_id}
+    return render(request, 'portfolio/cadeira_edita.html', context)
+
+def apaga_cadeira_view(request, cadeira_id):
+    Cadeira.objects.get(id=cadeira_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:sobre'))
+
+def novo_tecnologia_view(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('portfolio:login'))
+
+    if request.method == 'POST':
+        form = TecnologiaForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:web'))
+    form = TecnologiaForm()
+    context = {'form': form}
+    return render(request, 'portfolio/tecnologia_novo.html', context)
+
+@login_required
+def edita_tecnologia_view(request, tecnologia_id):
+    post = Tecnologia.objects.get(id=tecnologia_id)
+    if request.method == 'POST':
+        form = TecnologiaForm(request.POST,request.FILES,instance=post)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:web'))
+    else:
+        form = TecnologiaForm(instance=post)
+    context = {'form': form, 'tecnologia_id': tecnologia_id}
+    return render(request, 'portfolio/tecnologia_edita.html', context)
+
+def apaga_tecnologia_view(request, tecnologia_id):
+    Tecnologia.objects.get(id=tecnologia_id).delete()
+    return HttpResponseRedirect(reverse('portfolio:web'))
+
+def novo_noticia_view(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('portfolio:login'))
+
+    if request.method == 'POST':
+        form = NoticiaForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:web'))
+    form = NoticiaForm()
+    context = {'form': form}
+    return render(request, 'portfolio/noticia_novo.html', context)
+
+@login_required
+def edita_noticia_view(request, noticia_id):
+    post = Noticia.objects.get(id=noticia_id)
+    if request.method == 'POST':
+        form = NoticiaForm(request.POST,request.FILES,instance=post)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('portfolio:web'))
+    else:
+        form = NoticiaForm(instance=post)
+    context = {'form': form, 'noticia_id': noticia_id}
+    return render(request, 'portfolio/noticia_edita.html', context)
+
+def apaga_noticia_view(request, noticia_id):
+    Noticia.objects.get(id=noticia_id).delete()
     return HttpResponseRedirect(reverse('portfolio:web'))

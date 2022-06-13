@@ -1,0 +1,12 @@
+{% extends 'portfolio/sobre.html' %}
+{% load static %}
+{% block main %}
+<h3>Escola</h3>
+    <form action="{% url 'portfolio:escola_edita' escola_id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <a href="{% url 'portfolio:sobre' %}" role="button" class="btn btn-warning">Cancelar</a>
+        <input type="submit" value="Gravar" class="btn btn-primary" >
+        <a href="{% url 'portfolio:escola_apaga' escola_id %}" role="button" class="btn btn-danger">Apagar</a>
+    </form>
+{% endblock %}
