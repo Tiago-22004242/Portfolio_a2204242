@@ -263,7 +263,7 @@
             Escrita: {{lingua.escrita}}
         </p>
         {% if request.user.is_authenticated %}
-        <a href="{% url 'portfolio:linguagem_edita' linguagem.id %}" class="btn btn-warning">Editar</a>
+        <a href="{% url 'portfolio:linguagem_edita' lingua.id %}" class="btn btn-warning">Editar</a>
         {% endif %}
     </div>
     {% endfor %}
